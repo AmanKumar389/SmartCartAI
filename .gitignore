@@ -1,0 +1,46 @@
+HELP.md
+target/
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+# Project exclude paths
+/node_modules/
+/node_modules/agent-base/dist/
+/node_modules/agent-base/README.md
+/node_modules/axios/
+/node_modules/es-errors/
+/node_modules/es-set-tostringtag/
+/node_modules/form-data/
+/node_modules/has-symbols/
+/node_modules/has-tostringtag/
+/node_modules/hasown/
+/node_modules/https-proxy-agent/
