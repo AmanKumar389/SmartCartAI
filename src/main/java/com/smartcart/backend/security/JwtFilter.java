@@ -34,7 +34,11 @@ public class JwtFilter extends OncePerRequestFilter {
                 || path.startsWith("/cart")
                 || path.startsWith("/orders")
                 || path.startsWith("/wishlist")
-                || path.startsWith("/dashboard")) {
+                || path.startsWith("/dashboard")
+                || path.startsWith("/reviews")
+                || path.startsWith("/payment")
+                || path.startsWith("/api/chat")
+                || path.startsWith("/api/email")){
 
             filterChain.doFilter(request, response);
             return;

@@ -45,7 +45,11 @@ public class SecurityConfig {
                                 "/cart/**",
                                 "/orders/**",
                                 "/wishlist/**",
-                                "/dashboard/**"
+                                "/dashboard/**",
+                                "/reviews/**",
+                                "/payment/**",
+                                "/api/chat/**",
+                                "/api/email/**"
                         ).permitAll()
                         .anyRequest().authenticated()
                 );

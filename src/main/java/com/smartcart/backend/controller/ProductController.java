@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "*")
 @RequestMapping("/products")
 public class ProductController {
 
@@ -43,6 +43,13 @@ public class ProductController {
     @GetMapping("/category/{category}")
     public List<Product> getProductsByCategory(@PathVariable String category) {
         return productService.getProductsByCategory(category);
+    }
+
+    // AI Recommended Products
+    @GetMapping("/recommend")
+    public List<Product> getRecommendedProducts(
+            @RequestParam(required = false) String category) {
+        return productService.getRecommendedProducts(category);
     }
 
     // Update Product

@@ -9,7 +9,9 @@ function Signup() {
     const [user, setUser] = useState({
         name: "",
         email: "",
-        password: ""
+        password: "",
+        mobile: "",
+        dateOfBirth: ""
     });
 
     const handleChange = (e) => {
@@ -82,6 +84,7 @@ function Signup() {
                 placeholder="Enter Name"
                 value={user.name}
                 onChange={handleChange}
+                required
                 style={{
                     width: "100%",
                     padding: "10px",
@@ -95,6 +98,7 @@ function Signup() {
                 placeholder="Enter Email"
                 value={user.email}
                 onChange={handleChange}
+                required
                 style={{
                     width: "100%",
                     padding: "10px",
@@ -108,6 +112,34 @@ function Signup() {
                 placeholder="Enter Password"
                 value={user.password}
                 onChange={handleChange}
+                required
+                style={{
+                    width: "100%",
+                    padding: "10px",
+                    marginBottom: "15px"
+                }}
+            />
+
+            <input
+                type="tel"
+                name="mobile"
+                placeholder="Enter Mobile Number"
+                value={user.mobile}
+                onChange={handleChange}
+                required
+                style={{
+                    width: "100%",
+                    padding: "10px",
+                    marginBottom: "15px"
+                }}
+            />
+
+            <input
+                type="date"
+                name="dateOfBirth"
+                value={user.dateOfBirth}
+                onChange={handleChange}
+                required
                 style={{
                     width: "100%",
                     padding: "10px",

@@ -3,22 +3,36 @@ import axios from "axios";
 import ProductCard from "./ProductCard";
 
 function Products({ search, category }) {
+
     const [products, setProducts] = useState([]);
+    const [recommended, setRecommended] = useState([]);
 
     useEffect(() => {
-        axios
-            .get("http://localhost:8080/products")
+
+        axios.get("http://localhost:8080/products")
             .then((res) => {
-                console.log("API Response:", res.data);
                 setProducts(res.data);
             })
-            .catch((err) => {
-                console.log(err);
-            });
+            .catch((err) => console.log(err));
+
     }, []);
 
-    // Live Search Filter
-    console.log("Selected Category:", category);
+    useEffect(() => {
+
+        let url = "http://localhost:8080/products/recommend";
+
+        if (category && category !== "All") {
+            url += "?category=" + category;
+        }
+
+        axios.get(url)
+            .then((res) => {
+                setRecommended(res.data);
+            })
+            .catch((err) => console.log(err));
+
+    }, [category]);
+
     const filteredProducts = products.filter((product) => {
 
         const matchSearch =
@@ -33,6 +47,7 @@ function Products({ search, category }) {
 
     return (
         <div style={{ padding: "20px" }}>
+
             <h2 style={{ textAlign: "center" }}>
                 🔥 Trending Products
             </h2>
@@ -43,6 +58,7 @@ function Products({ search, category }) {
                     flexWrap: "wrap",
                     justifyContent: "center",
                     gap: "20px",
+                    marginBottom: "50px"
                 }}
             >
                 {filteredProducts.length > 0 ? (
@@ -56,6 +72,27 @@ function Products({ search, category }) {
                     <h3>No Products Found 😔</h3>
                 )}
             </div>
+
+            <h2 style={{ textAlign: "center" }}>
+                🤖 AI Recommended Products
+            </h2>
+
+            <div
+                style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    justifyContent: "center",
+                    gap: "20px",
+                }}
+            >
+                {recommended.map((product) => (
+                    <ProductCard
+                        key={product.id}
+                        product={product}
+                    />
+                ))}
+            </div>
+
         </div>
     );
 }

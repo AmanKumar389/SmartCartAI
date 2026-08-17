@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { FaHeart } from "react-icons/fa";
+import { FaHeart, FaStar } from "react-icons/fa";
 
 function ProductCard({ product }) {
 
@@ -50,14 +50,15 @@ function ProductCard({ product }) {
         <div
             onClick={() => navigate(`/product/${product.id}`)}
             style={{
-                width: "220px",
-                border: "1px solid lightgray",
-                borderRadius: "10px",
+                width: "230px",
+                border: "1px solid #ddd",
+                borderRadius: "12px",
                 padding: "15px",
                 textAlign: "center",
-                boxShadow: "0 2px 10px lightgray",
+                boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
                 cursor: "pointer",
-                transition: "0.3s"
+                transition: "0.3s",
+                background: "#fff"
             }}
             onMouseEnter={(e) =>
                 e.currentTarget.style.transform = "scale(1.03)"
@@ -66,17 +67,29 @@ function ProductCard({ product }) {
                 e.currentTarget.style.transform = "scale(1)"
             }
         >
+
             <img
                 src={product.imageUrl}
                 alt={product.name}
                 width="180"
                 height="180"
-                style={{ objectFit: "cover" }}
+                style={{ objectFit: "cover", borderRadius: "10px" }}
             />
 
             <h3>{product.name}</h3>
 
             <p>{product.category}</p>
+
+            <div style={{ color: "#f39c12", marginBottom: "8px" }}>
+                <FaStar />
+                <FaStar />
+                <FaStar />
+                <FaStar />
+                <FaStar />
+                <span style={{ color: "black", marginLeft: "5px" }}>
+                    (4.8)
+                </span>
+            </div>
 
             <h2 style={{ color: "green" }}>₹{product.price}</h2>
 
@@ -88,14 +101,14 @@ function ProductCard({ product }) {
                     background: "crimson",
                     color: "white",
                     border: "none",
-                    padding: "10px 20px",
+                    padding: "10px",
                     borderRadius: "5px",
                     cursor: "pointer",
-                    marginBottom: "10px",
+                    marginBottom: "8px",
                     width: "100%"
                 }}
             >
-                <FaHeart /> Wishlist
+                ❤️ Wishlist
             </button>
 
             <button
@@ -104,14 +117,34 @@ function ProductCard({ product }) {
                     background: "#2874F0",
                     color: "white",
                     border: "none",
-                    padding: "10px 20px",
+                    padding: "10px",
                     borderRadius: "5px",
                     cursor: "pointer",
+                    marginBottom: "8px",
                     width: "100%"
                 }}
             >
                 Add to Cart
             </button>
+
+            <button
+                onClick={(e) => {
+                    e.stopPropagation();
+                    navigate("/payment");
+                }}
+                style={{
+                    background: "#ff9800",
+                    color: "white",
+                    border: "none",
+                    padding: "10px",
+                    borderRadius: "5px",
+                    cursor: "pointer",
+                    width: "100%"
+                }}
+            >
+                Buy Now
+            </button>
+
         </div>
     );
 }

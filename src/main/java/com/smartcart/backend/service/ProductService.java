@@ -38,8 +38,24 @@ public class ProductService {
         return productRepository.findByCategory(category);
     }
 
+    // Get Recommended Products
+    public List<Product> getRecommendedProducts(String category) {
+        if (category == null || category.isEmpty()) {
+            return productRepository.findTop8ByOrderByIdDesc();
+        }
+
+        List<Product> products = productRepository.findTop8ByCategory(category);
+
+        if (products.isEmpty()) {
+            return productRepository.findTop8ByOrderByIdDesc();
+        }
+
+        return products;
+    }
+
     // Update Product
     public Product updateProduct(Long id, Product updatedProduct) {
+
         Product product = productRepository.findById(id).orElse(null);
 
         if (product != null) {

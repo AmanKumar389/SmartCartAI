@@ -12,7 +12,9 @@ import Payment from "./components/Payment";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Admin from "./components/Admin";
+import Profile from "./components/Profile";
 import Footer from "./components/Footer";
+import ChatBot from "./components/ChatBot";
 import "./App.css";
 
 function Home({ search, category, setCategory }) {
@@ -20,9 +22,7 @@ function Home({ search, category, setCategory }) {
         <>
             <Categories setCategory={setCategory} />
             <Banner />
-            <Products search={search}
-             category={category}
-            />
+            <Products search={search} category={category} />
 
             <div
                 style={{
@@ -103,9 +103,17 @@ function App() {
                     element={<Admin />}
                 />
 
+                <Route
+                    path="/profile"
+                    element={<Profile />}
+                />
+
             </Routes>
 
             <Footer />
+
+            <ChatBot />
+
         </>
     );
 }

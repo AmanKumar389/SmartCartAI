@@ -115,10 +115,14 @@ function Navbar({ search, setSearch }) {
                     </>
                 ) : (
                     <>
-                        <FaUserCircle
-                            size={32}
-                            style={{ color: "white" }}
-                        />
+                        <Link
+                            to="/profile"
+                            style={{ textDecoration: "none", color: "white" }}
+                        >
+                            <button>
+                                <FaUserCircle /> Profile
+                            </button>
+                        </Link>
 
                         <button onClick={logout}>
                             Logout
